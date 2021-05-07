@@ -13,4 +13,5 @@ export class BasicosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

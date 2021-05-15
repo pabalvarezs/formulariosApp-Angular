@@ -1,1 +1,63 @@
-<p>dinamicos works!</p>
+<h2>Template: <small>Dinámicos</small></h2>
+<hr>
+<form action="" autocomplete="off" #miFormulario="ngForm">
+    <!-- Nombre -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input  type="text"
+                    class="form-control"
+                    placeholder="Nombre de la persona"
+                    required
+                    ngModel
+                    name="nombre">
+                    <span   *ngIf="miFormulario.controls.nombre?.errors 
+                                    &&
+                                    miFormulario.controls.nombre?.touched"
+                            class="form-text text-danger">
+                        Este campo es obligatorio
+                    </span>
+        </div>
+    </div>
+
+    <!-- Agregar Favorito -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="input-group">
+                <input  class="form-control"
+                        placeholder="Agregar Favorito">
+                <button class="btn btn-outline-primary"
+                        type="button">
+                    Agregar
+                </button>
+        </div>
+    </div>
+
+    <!-- Lista Juegos Favorios -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-12">
+            <input  class="form-control mb-1">
+        </div>
+        <div class="col-sm-12">
+            <input  class="form-control mb-1">
+        </div>
+        <div class="col-sm-12">
+            <input  class="form-control mb-1">
+        </div>
+        <div class="col-sm-12">
+            <input  class="form-control mb-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button"
+                    (click)="guardar()"
+                    class="btn btn-primary float-end "
+                    [disabled] = miFormulario.invalid>
+                    Guardar
+            </button>
+        </div>
+    </div>
+</form>

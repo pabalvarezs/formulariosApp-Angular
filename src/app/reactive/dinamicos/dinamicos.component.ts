@@ -47,10 +47,15 @@ export class DinamicosComponent  {
       return
     }
     // (this.miFormulario.controls.favoritos as FormArray).push(this.nuevoFavorito.value)
-    // this.favoritosArr.push( new FormControl() )
+    // this.favoritosArr.push( new FormControl(this.nuevoFavorito.value,Validators.required) )
     this.favoritosArr.push( this.fb.control(this.nuevoFavorito.value,Validators.required))
     this.nuevoFavorito.reset();
 
+  }
+
+  eliminarFavorito(index : number){
+
+    this.favoritosArr.removeAt(index);
   }
 
 }

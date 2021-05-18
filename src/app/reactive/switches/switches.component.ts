@@ -19,6 +19,20 @@ export class SwitchesComponent implements OnInit  {
       condiciones: false
     })
 
+    // this.miFormulario.get('condiciones')?.valueChanges.subscribe( newValue=> {
+    //   console.log(newValue);
+      
+    // })
+    
+    // this.miFormulario.valueChanges.subscribe( form => {
+    //   delete form.condiciones;
+    //   this.persona = form;      
+    // })
+
+    this.miFormulario.valueChanges.subscribe( ({condiciones, ...resto}) => {
+      this.persona = resto;      
+    })
+
   }
 
   miFormulario : FormGroup = this.fb.group({
@@ -28,9 +42,16 @@ export class SwitchesComponent implements OnInit  {
 
   });
 
-  persona ={
+  persona = {
     genero: 'F',
     notificaciones: true
   }
 
+  guardar(){
+
+    const formValue = {...this.miFormulario.value};
+    delete formValue.condiciones;
+
+    this.persona = formValue;
+  }
 }

@@ -1,5 +1,6 @@
+import { FnParam } from '@angular/compiler/src/output/output_ast';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamicos',
@@ -14,10 +15,12 @@ export class DinamicosComponent  {
   miFormulario : FormGroup = this.fb.group({
     nombre:['',[Validators.required, Validators.minLength(3)]],
     favoritos: this.fb.array([
-      ['Metal Gear', Validators.required],            //no son arrays si no que son formControl
-      ['Death Stranding', Validators.required]        //no son arrays si no que son formControl
+      ['Borderlands', Validators.required],            //no son arrays si no que son formControl
+      ['Metal Gear', Validators.required]        //no son arrays si no que son formControl
     ],Validators.required)
   })
+  
+  nuevoFavorito :FormControl = this.fb.control('',Validators.required)
 
   get favoritosArr(){
     return this.miFormulario.get('favoritos') as FormArray; //indicamos a ts que esto es un forarry
@@ -36,6 +39,17 @@ export class DinamicosComponent  {
 
     console.log(this.miFormulario.value);
     
+
+  }
+
+  agregarFavorito(){
+    if(this.nuevoFavorito.invalid){
+      return
+    }
+    // (this.miFormulario.controls.favoritos as FormArray).push(this.nuevoFavorito.value)
+    // this.favoritosArr.push( new FormControl() )
+    this.favoritosArr.push( this.fb.control(this.nuevoFavorito.value,Validators.required))
+    this.nuevoFavorito.reset();
 
   }
 

@@ -12,7 +12,7 @@ export class RegistroComponent implements OnInit {
 
   miFormulario :FormGroup = this.fb.group({
     nombre    : [ '' , [ Validators.required, Validators.pattern(this.vs.nombreApellidoPattern)]],
-    email     : [ '' , [ Validators.required, Validators.pattern(this.vs.emailPattern ]],
+    email     : [ '' , [ Validators.required, Validators.pattern(this.vs.emailPattern)]],
     username  : [ '' , [ Validators.required, this.vs.noPuedeSerPabs]],
   })
   

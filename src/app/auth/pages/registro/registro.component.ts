@@ -39,11 +39,11 @@ export class RegistroComponent implements OnInit {
 
   submitFomulario(){
 
-    // if(this.miFormulario.invalid){
-    //   return
-    // }
+    if(this.miFormulario.invalid){
+      this.miFormulario.markAllAsTouched();
+      return
+    }
     console.log(this.miFormulario.value);
-    this.miFormulario.markAllAsTouched();
     
   }
 }

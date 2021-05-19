@@ -14,6 +14,10 @@ export class RegistroComponent implements OnInit {
     nombre    : [ '' , [ Validators.required, Validators.pattern(this.vs.nombreApellidoPattern)]],
     email     : [ '' , [ Validators.required, Validators.pattern(this.vs.emailPattern)]],
     username  : [ '' , [ Validators.required, this.vs.noPuedeSerPabs]],
+    password  : [ '' , [ Validators.required, Validators.minLength(6)]],
+    password2 : [ '' , [ Validators.required]],
+  },{
+    validators:[this.vs.camposIguales('password','password2')]    
   })
   
   constructor(  private fb : FormBuilder,
@@ -21,9 +25,9 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.miFormulario.reset({
-      nombre : 'Pablo Alvarez',
-      email : 'pabloalvarezseguel@gmail.com',
-      username : 'Pabloncho',
+      nombre    : 'Pablo Alvarez',
+      email     : 'pabloalvarezseguel@gmail.com',
+      username  : 'Pabloncho',
     })
   }
 
@@ -35,9 +39,9 @@ export class RegistroComponent implements OnInit {
 
   submitFomulario(){
 
-    if(this.miFormulario.invalid){
-      return
-    }
+    // if(this.miFormulario.invalid){
+    //   return
+    // }
     console.log(this.miFormulario.value);
     this.miFormulario.markAllAsTouched();
     

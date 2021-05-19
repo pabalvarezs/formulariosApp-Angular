@@ -25,7 +25,12 @@
                 <div class="col-sm-9">
                     <input  type="email"
                             class="form-control"
-                            placeholder="Email de Usuario">
+                            placeholder="Email de Usuario"
+                            formControlName="email">
+                    <span   class="form-text text-danger"
+                            *ngIf="campoNoValido('email')">
+                        El correo es obligatorio
+                    </span>  
                 </div>
             </div>
 
@@ -75,3 +80,5 @@
 <h2>Form Valid:{{miFormulario.valid}}</h2>
 <h3>Errores Nombre</h3>
 <pre>{{ miFormulario.controls.nombre.errors | json}}</pre>
+<h3>Errores Email</h3>
+<pre>{{ miFormulario.controls.email.errors | json}}</pre>

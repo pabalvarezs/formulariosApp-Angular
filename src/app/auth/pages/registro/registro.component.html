@@ -40,7 +40,12 @@
                 <div class="col-sm-9">
                     <input  type="text"
                             class="form-control"
-                            placeholder="Nombre código de Usuario">
+                            placeholder="Nombre código de Usuario"
+                            formControlName="username">
+                    <span   class="form-text text-danger"
+                            *ngIf="campoNoValido('username')">
+                        El username no puede ser pabs
+                    </span>
                 </div>
             </div>
 
@@ -82,3 +87,5 @@
 <pre>{{ miFormulario.controls.nombre.errors | json}}</pre>
 <h3>Errores Email</h3>
 <pre>{{ miFormulario.controls.email.errors | json}}</pre>
+<h3>Errores Username</h3>
+<pre>{{ miFormulario.controls.username.errors | json}}</pre>

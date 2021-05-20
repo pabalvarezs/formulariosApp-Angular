@@ -53,6 +53,7 @@ export class RegistroComponent implements OnInit {
       return 'Ya existe el correo'
     }
     return ''
+    
   }
 
   // emailRequiered(){
